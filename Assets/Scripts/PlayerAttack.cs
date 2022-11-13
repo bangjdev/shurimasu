@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Transform throwingPoint;
-    public GameObject throwingWeapon;
+    public GameObject throwingWeaponPrefab;
     public GameObject inHandWeapon;
     public float pickupDelay = 0.2f;
     public bool allowPickup = true;
@@ -13,7 +13,8 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Throw() {
         if (canThrow) {
-            Instantiate(throwingWeapon, throwingPoint.position, throwingPoint.rotation);
+            var throwingWeapon = Instantiate(throwingWeaponPrefab, throwingPoint.position, throwingPoint.rotation);
+            throwingWeapon.GetComponent<WeaponScript>().Fire(gameObject);
             canThrow = false;
             allowPickup = false;
             yield return new WaitForSeconds(pickupDelay);
