@@ -13,8 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Throw() {
         if (canThrow) {
-            var throwingWeapon = Instantiate(throwingWeaponPrefab, throwingPoint.position, throwingPoint.rotation);
-            throwingWeapon.GetComponent<WeaponScript>().Fire(gameObject);
+            StartCoroutine(Instantiate(throwingWeaponPrefab, throwingPoint.position, throwingPoint.rotation).GetComponent<WeaponScript>().Fire(transform));
             canThrow = false;
             allowPickup = false;
             yield return new WaitForSeconds(pickupDelay);
@@ -29,7 +28,6 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider obj)
     {
         if (!allowPickup) {
-            
             return;
         }
         if (obj.name.StartsWith("Weapon")) {

@@ -131,7 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 5371834039854007260}
-  fireSpeed: 30
+  fireSpeed: 50
+  rotationSpeed: 10
+  flyDuration: 1.5
   fired: 0
 --- !u!54 &5371834039854007260
 Rigidbody:

@@ -446,6 +446,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9ee61da12802bab4a9dfedf9fa11127f, type: 2}
+    - target: {fileID: 1087602659020072797, guid: 8e6dc1aa73a40954eb50a668182472f6, type: 3}
+      propertyPath: fireSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087602659020072797, guid: 8e6dc1aa73a40954eb50a668182472f6, type: 3}
+      propertyPath: flyDuration
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4431839051051252043, guid: 8e6dc1aa73a40954eb50a668182472f6, type: 3}
       propertyPath: m_RootOrder
       value: 0
