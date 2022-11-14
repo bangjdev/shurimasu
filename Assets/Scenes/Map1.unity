@@ -407,6 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793568241}
+  - component: {fileID: 1793568242}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -430,6 +431,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1793568242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793568240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa69a3fd589b724d975a59a2af419b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1343197775985187168, guid: c4eb3b818ed3bf041b7264a880a84a2f, type: 3}
 --- !u!1001 &1136664194146229148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1136664194306765496, guid: 1ae3cf2a8a7650144aaadc6c63acac50, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -16.38
       objectReference: {fileID: 0}
     - target: {fileID: 1136664194306765496, guid: 1ae3cf2a8a7650144aaadc6c63acac50, type: 3}
       propertyPath: m_LocalRotation.w
