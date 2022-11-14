@@ -15,11 +15,8 @@ public class WeaponScript : MonoBehaviour
     private float fireSpeed = 50f;
     private float rotationSpeed = 50f;
     private float flyDuration = 1.25f;
-    private bool fired = false;
 
     private FLY_STATUS status = FLY_STATUS.NONE;
-    
-
     private Transform player;
     // Start is called before the first frame update
     void Start()
