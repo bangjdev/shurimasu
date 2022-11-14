@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Rigidbody rigidBody;
     private float enemySpeed = 5;
+    private float currentHealth = 10f;
     void Start()
     {
         player = GameObject.Find("Player");       
@@ -21,6 +22,13 @@ public class Enemy : MonoBehaviour
             this.rigidBody.transform.rotation = Quaternion.RotateTowards(this.rigidBody.transform.rotation, Quaternion.LookRotation(vectorTowardPlayer), enemySpeed);
         } else {
             this.rigidBody.transform.Rotate(new Vector3(0, 1, 0) * enemySpeed * 2, Space.World);
+        }
+    }
+
+    public void TakeDamage(float damage) {
+        this.currentHealth -= damage;
+        if (this.currentHealth < 0) {
+            Destroy(this.gameObject);
         }
     }
 }

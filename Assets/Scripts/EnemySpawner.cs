@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
 
     private float lastSpawnTime = 0;
-    private float currentHealth = 100f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,4 +30,5 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(2);
         enemy.GetComponent<Rigidbody>().useGravity = true;
     }
+
 }

@@ -15,6 +15,7 @@ public class WeaponScript : MonoBehaviour
     private float fireSpeed = 50f;
     private float rotationSpeed = 50f;
     private float flyDuration = 1.25f;
+    private float weaponDamage = 10f;
 
     private FLY_STATUS status = FLY_STATUS.NONE;
     private Transform player;
@@ -49,5 +50,15 @@ public class WeaponScript : MonoBehaviour
         status = FLY_STATUS.HANGING; 
         yield return new WaitForSeconds(flyDuration / 5);
         status = FLY_STATUS.FLY_BACK; 
+    }
+
+    private void OnTriggerEnter(Collider obj)
+    {
+        if (status == FLY_STATUS.NONE) {
+            return;
+        }
+        if (obj.name.StartsWith("Enemy")) {
+            obj.gameObject.GetComponent<Enemy>().TakeDamage(weaponDamage);
+        }
     }
 }
