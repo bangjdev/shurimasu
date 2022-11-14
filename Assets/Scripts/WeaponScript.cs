@@ -12,10 +12,10 @@ public class WeaponScript : MonoBehaviour
     };
     public Rigidbody rigidBody;
 
-    public float fireSpeed;
-    public float rotationSpeed;
-    public float flyDuration;
-    public bool fired = false;
+    private float fireSpeed = 50f;
+    private float rotationSpeed = 50f;
+    private float flyDuration = 1.25f;
+    private bool fired = false;
 
     private FLY_STATUS status = FLY_STATUS.NONE;
     
@@ -41,6 +41,8 @@ public class WeaponScript : MonoBehaviour
                 this.rigidBody.transform.position = Vector3.MoveTowards(this.rigidBody.transform.position, player.position, Time.fixedDeltaTime * fireSpeed);
             break;
         }
+        Transform gfx = this.transform.Find("Gfx");
+        gfx.Rotate(new Vector3(0, 1, 0) * rotationSpeed, Space.World);
     }
 
     public IEnumerator Fire(Transform player) {
