@@ -6,11 +6,16 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Rigidbody rigidBody;
     private float enemySpeed = 5;
+    private float maxHealth = 10f;
     private float currentHealth = 10f;
+    private float attackRate = 1f;
+    private float lastAttackTime;
+    private float damage = 5f;
     void Start()
     {
         player = GameObject.Find("Player");       
         rigidBody = GetComponent<Rigidbody>();
+        lastAttackTime = Time.time;
     }
 
     // Update is called once per frame
@@ -29,6 +34,16 @@ public class Enemy : MonoBehaviour
         this.currentHealth -= damage;
         if (this.currentHealth < 0) {
             Destroy(this.gameObject);
+        }
+    }
+
+    public void OnCollisionEnter(Collision obj) {
+        if (obj.gameObject.GetInstanceID() == player.GetInstanceID()) {
+            if ((Time.time - lastAttackTime) < (1 / attackRate)) {
+                return;
+            }
+            lastAttackTime = Time.time;
+            player.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 }

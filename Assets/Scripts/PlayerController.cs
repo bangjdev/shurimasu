@@ -6,10 +6,13 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
     public PlayerAttack playerAttack;
     public PlayerMovement playerMovement;
+    public float MaxHealth {get; set;} = 100f;
+    public float CurrentHealth {get; set;}
     // Start is called before the first frame update
     void Start()
     {
         playerInput.ActivateInput();
+        CurrentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -33,6 +36,13 @@ public class PlayerController : MonoBehaviour
             case "Throw":
                 StartCoroutine(playerAttack.Throw());
             break;
+        }
+    }
+
+    public void TakeDamage(float damage) {
+        this.CurrentHealth -= damage;
+        if (this.CurrentHealth < 0) {
+            Destroy(this.gameObject);
         }
     }
 }
