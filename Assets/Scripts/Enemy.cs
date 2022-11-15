@@ -38,7 +38,10 @@ public class Enemy : MonoBehaviour
     }
 
     public void OnCollisionEnter(Collision obj) {
-        if (obj.gameObject.GetInstanceID() == player.GetInstanceID()) {
+    }
+
+    public void OnCollisionStay(Collision collision) {
+        if (collision.gameObject.GetInstanceID() == player.GetInstanceID()) {
             if ((Time.time - lastAttackTime) < (1 / attackRate)) {
                 return;
             }
