@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera mainCamera;
 
     public float movementSpeed = 30f;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 20f;
 
     private Vector3 targetVector = Vector3.zero;
 

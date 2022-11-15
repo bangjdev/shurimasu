@@ -19,9 +19,11 @@ public class WeaponScript : MonoBehaviour
 
     private FLY_STATUS status = FLY_STATUS.NONE;
     private Transform player;
+    private Transform gfx;
     // Start is called before the first frame update
     void Start()
     {
+        gfx = this.transform.Find("Gfx");
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class WeaponScript : MonoBehaviour
             case FLY_STATUS.NONE:
                 return;
             case FLY_STATUS.FLY_AWAY:
-                this.rigidBody.transform.Translate(new Vector3(1, 0, 0) * fireSpeed * Time.fixedDeltaTime);
+                this.rigidBody.transform.Translate(new Vector3(0, 0, 1) * fireSpeed * Time.fixedDeltaTime);
             break;
             case FLY_STATUS.HANGING:
             break;
@@ -39,7 +41,6 @@ public class WeaponScript : MonoBehaviour
                 this.rigidBody.transform.position = Vector3.MoveTowards(this.rigidBody.transform.position, player.position, Time.fixedDeltaTime * fireSpeed);
             break;
         }
-        Transform gfx = this.transform.Find("Gfx");
         gfx.Rotate(new Vector3(0, 1, 0) * rotationSpeed, Space.World);
     }
 
