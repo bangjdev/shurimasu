@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
     public PlayerAttack playerAttack;
     public PlayerMovement playerMovement;
+    public Animator animator;
     public float MaxHealth {get; set;} = 100f;
     public float CurrentHealth {get; set;}
     // Start is called before the first frame update
@@ -31,7 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         switch (callback.action.name) {
             case "Move":
-                playerMovement.SetMovementVector(callback.ReadValue<Vector2>());
+                var movementVector = callback.ReadValue<Vector2>();
+                playerMovement.SetMovementVector(movementVector);
+                if (movementVector.magnitude == 0) {
+                    animator.SetBool("isRunning", false);
+                } else {
+                    animator.SetBool("isRunning", true);
+                }
             break;
             case "Throw":
                 StartCoroutine(playerAttack.Throw());
